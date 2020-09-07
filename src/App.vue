@@ -1,16 +1,8 @@
 <template>
   <div>
-    <h1>APP</h1>
-    <hr>
 <!--    指定router组件显示的位置-->
     <router-view></router-view>
-    <div>
-      <router-link to="/money">记账</router-link>
-      |
-      <router-link to="/labels">标签</router-link>
-      |
-      <router-link to="/statistics">统计</router-link>
-    </div>
+
   </div>
 </template>
 
