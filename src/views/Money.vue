@@ -1,29 +1,6 @@
 <template>
   <div>
-    <Layout>
-      <div class="tags">
-        <ul class="current">
-          <li>衣</li>
-          <li>食</li>
-          <li>住</li>
-          <li>行</li>
-        </ul>
-        <div class="new">
-          <button>新增按钮</button>
-        </div>
-      </div>
-      <div>
-        <label class="notes">
-          <span class="name">备注</span>
-          <input type="text" placeholder="在这里输入备注">
-        </label>
-      </div>
-      <div>
-        <ul class="types">
-          <li class="selected">支出</li>
-          <li>收入</li>
-        </ul>
-      </div>
+    <Layout class-prefix="layout">
       <div class="numberPad">
         <div class="output">100</div>
         <div class="buttons">
@@ -43,9 +20,68 @@
           <button>.</button>
         </div>
       </div>
+
+      <div>
+        <ul class="types">
+          <li class="selected">支出</li>
+          <li>收入</li>
+        </ul>
+      </div>
+
+      <div>
+        <label class="notes">
+          <span class="name">备注</span>
+          <input type="text" placeholder="在这里输入备注">
+        </label>
+      </div>
+
+      <div class="tags">
+        <div class="list-wrapper">
+          <ul class="current">
+            <li>衣</li>
+            <li>食</li>
+            <li>住</li>
+            <li>行</li>
+            <li>衣</li>
+            <li>食</li>
+            <li>住</li>
+            <li>行</li>
+            <li>衣</li>
+            <li>食</li>
+            <li>住</li>
+            <li>行</li>
+            <li>衣</li>
+            <li>食</li>
+            <li>住</li>
+            <li>行</li>
+            <li>衣</li>
+            <li>食</li>
+            <li>住</li>
+            <li>行</li>
+            <li>衣</li>
+            <li>食</li>
+            <li>住</li>
+            <li>行</li>
+          </ul>
+        </div>
+
+        <div class="new">
+          <button>新增按钮</button>
+        </div>
+      </div>
+
     </Layout>
   </div>
 </template>
+
+<style lang="scss">
+  .layout-content {
+    /*border: 3px solid red;*/
+    display: flex;
+    flex-direction: column-reverse;
+  }
+</style>
+
 
 <script lang="ts">
   export default {
@@ -151,18 +187,31 @@
   }
 
   .tags {
+    flex-grow: 1;
     font-size: 14px;
     padding: 16px;
-    > .current {
+    /*border: 1px solid green;*/
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    > .list-wrapper {
       display: flex;
-      > li {
-        background-color: #d9d9d9;
-        $h: 24px;
-        height: $h;
-        line-height: $h;
-        border-radius: $h/2;
-        padding: 0 16px;
-        margin-right: 12px;
+      flex-direction: column;
+      overflow: auto;
+      > .current {
+        display: flex;
+        flex-grow: 1;
+        flex-wrap: wrap;
+        > li {
+          background-color: #d9d9d9;
+          $h: 24px;
+          height: $h;
+          line-height: $h;
+          border-radius: $h/2;
+          padding: 0 16px;
+          margin-right: 12px;
+          margin-top: 4px;
+        }
       }
     }
     > .new {

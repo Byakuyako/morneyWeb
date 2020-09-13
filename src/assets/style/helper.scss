@@ -4,6 +4,7 @@ $font-song: Georgia, "Nimbus Roman No9 L", "Songti SC", "Noto Serif CJK SC", "So
 
 $color-highlight: orange;
 
+//使用 clearfix 清除浮动
 //使用 placeholder
 %clearFix {
   &::after {
