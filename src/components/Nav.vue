@@ -20,9 +20,9 @@
   import y from '@/assets/icons/money.svg'
   import z from '@/assets/icons/statistics.svg'
 
-  console.log(x);
-  console.log(y);
-  console.log(z);
+  // console.log(x);
+  // console.log(y);
+  // console.log(z);
 
   export default {
     name: 'Nav'
