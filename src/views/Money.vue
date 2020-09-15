@@ -3,7 +3,7 @@
     <Layout class-prefix="layout">
       <NumberPad/>
 
-      <Types xxx="h1"/>
+      <Types :xxx="333"/>
 
       <Notes/>
 
