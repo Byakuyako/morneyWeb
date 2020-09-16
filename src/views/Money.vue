@@ -3,11 +3,12 @@
     <Layout class-prefix="layout">
       <NumberPad/>
 
-      <Types :xxx="333"/>
+      <Types/>
 
       <Notes/>
 
-      <Tags/>
+<!--      .sync很关键-->
+      <Tags :data-source.sync="tags"/>
 
     </Layout>
   </div>
@@ -18,9 +19,15 @@
   import Types from '@/components/Money/Types.vue';
   import Notes from '@/components/Money/Notes.vue';
   import Tags from '@/components/Money/Tags.vue';
+
   export default {
     name: 'Money',
-    components: {Tags, Notes, Types, NumberPad}
+    components: {Tags, Notes, Types, NumberPad},
+    data() {
+      return {
+        tags: ['衣', '食', '住', '行']
+      };
+    }
   };
 </script>
 
