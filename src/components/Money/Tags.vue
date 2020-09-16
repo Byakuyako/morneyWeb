@@ -27,6 +27,7 @@
     toggle(tag: string) {
       const index = this.selectedTags.indexOf(tag);
       index >= 0 ? this.selectedTags.splice(index, 1) : this.selectedTags.push(tag);
+      this.$emit('update:value', this.selectedTags);
     }
 
     create() {
@@ -34,9 +35,9 @@
       // console.log(name);
       if (name === '') {
         window.alert('标签名不能为空');
-      } else if (this.dataSource){
+      } else if (this.dataSource) {
         // this.dataSource ? this.dataSource.push(name!) : null//不能改外部数据
-        this.$emit('update:dataSource', [...this.dataSource, name])
+        this.$emit('update:dataSource', [...this.dataSource, name]);
       }
     }
   }

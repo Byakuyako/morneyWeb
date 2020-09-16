@@ -66,7 +66,7 @@
     }
 
     ok() {
-      this.output = '0';
+      this.$emit('update:value', this.output)
     }
   }
 
