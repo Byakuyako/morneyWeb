@@ -4,7 +4,7 @@
       {{record}}
       <NumberPad @update:value="onUpdateAmount"/>
 
-      <Types @update:value="onUpdateType"/>
+      <Types :value.sync="record.type"/>
 
       <Notes @update:value="onUpdateNotes"/>
 
@@ -53,10 +53,7 @@
       this.record.notes = value;
     }
 
-    onUpdateType(value: string) {
-      // console.log(value);
-      this.record.type = value;
-    }
+
 
     onUpdateAmount(value: string) {
       // console.log(value);
