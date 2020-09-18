@@ -66,6 +66,7 @@
 
     @Watch('recordList')
     onRecordListChanged(){
+      //转成字符串存到localStorage
       window.localStorage.setItem('recordList',JSON.stringify(this.recordList))
     }
   }
