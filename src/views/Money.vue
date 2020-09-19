@@ -68,6 +68,7 @@
     onRecordListChanged(){
       //转成字符串存到localStorage
       window.localStorage.setItem('recordList',JSON.stringify(this.recordList))
+      //前一个字符串得数据被覆盖了
     }
   }
 </script>
