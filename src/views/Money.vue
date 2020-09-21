@@ -29,6 +29,7 @@
     notes: string;
     type: string;
     amount: number;
+    createdAt?: Date; //可以写类型或者类(构造函数),
   }
 
   @Component({
@@ -36,7 +37,8 @@
   })
   export default class Money extends Vue {
     tags = ['衣', '食', '住', '行'];
-    recordList: Record[] = [];
+    recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList') || '');
+    // recordList: Record[] = [];
     record: Record = {
       tags: [],
       notes: '',
@@ -60,15 +62,15 @@
     }
 
     saveRecord() {
-      const record2 = JSON.parse(JSON.stringify(this.record)) //深拷贝
+      const record2 = JSON.parse(JSON.stringify(this.record)); //深拷贝
       this.recordList.push(record2);
       console.log(this.recordList);
     }
 
     @Watch('recordList')
-    onRecordListChanged(){
+    onRecordListChanged() {
       //转成字符串存到localStorage
-      window.localStorage.setItem('recordList',JSON.stringify(this.recordList))
+      window.localStorage.setItem('recordList', JSON.stringify(this.recordList));
     }
   }
 </script>
