@@ -1,7 +1,7 @@
 <template>
   <div>
     <Layout class-prefix="layout">
-      {{record}}
+      {{recordList}}
       <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
 
       <Types :value.sync="record.type"/>
@@ -22,6 +22,19 @@
   import Tags from '@/components/Money/Tags.vue';
   import Vue from 'vue';
   import {Component, Watch} from 'vue-property-decorator';
+
+  // const version = window.localStorage.getItem('version') || '0';
+  const recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList') || '')
+
+  // if (version === '0.0.1'){
+  //   //数据库升级, 数据迁移, 暂不使用
+  //   recordList.forEach(record => {
+  //     record.createdAt = new Date(2020, 1, 1) //给前面的时间数据一个初始值, 保证数据结构
+  //   })
+  //   window.localStorage.setItem('recordList', JSON.stringify(recordList))
+  // }
+  //
+  // window.localStorage.setItem('version', '0.0.2');
 
   //record 类型声明
   type Record = {
@@ -62,7 +75,8 @@
     }
 
     saveRecord() {
-      const record2 = JSON.parse(JSON.stringify(this.record)); //深拷贝
+      const record2: Record = JSON.parse(JSON.stringify(this.record)); //深拷贝
+      record2.createdAt = new Date();
       this.recordList.push(record2);
       console.log(this.recordList);
     }
