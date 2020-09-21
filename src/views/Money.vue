@@ -60,7 +60,8 @@
     }
 
     saveRecord() {
-      this.recordList.push(this.record);
+      const record2 = JSON.parse(JSON.stringify(this.record)) //深拷贝
+      this.recordList.push(record2);
       console.log(this.recordList);
     }
 
@@ -68,7 +69,6 @@
     onRecordListChanged(){
       //转成字符串存到localStorage
       window.localStorage.setItem('recordList',JSON.stringify(this.recordList))
-      //前一个字符串得数据被覆盖了, 修改一下数组方法
     }
   }
 </script>
