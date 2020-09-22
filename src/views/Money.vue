@@ -1,13 +1,11 @@
 <template>
   <div>
     <Layout class-prefix="layout">
-      {{recordList}}
       <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
 
       <Types :value.sync="record.type"/>
 
       <Notes @update:value="onUpdateNotes"/>
-
       <!--      .sync很关键-->
       <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
 

@@ -1,7 +1,27 @@
 <template>
   <div>
     <Layout>
-      <p>Labels.vue</p>
+      <ol class="tags">
+        <li>
+          <span>衣</span>
+          <Icon name="right"/>
+        </li>
+        <li>
+          <span>食</span>
+          <Icon name="right"/>
+        </li>
+        <li>
+          <span>住</span>
+          <Icon name="right"/>
+        </li>
+        <li>
+          <span>行</span>
+          <Icon name="right"/>
+        </li>
+      </ol>
+      <div class="newTag-wrapper">
+        <button class="newTag">新建标签</button>
+      </div>
     </Layout>
   </div>
 </template>
@@ -13,5 +33,38 @@
 </script>
 
 <style lang="scss" scoped>
-
+  .tags {
+    background: white;
+    font-size: 16px;
+    padding-left: 16px;
+    > li {
+      min-height: 44px;
+      display: flex;
+      /*flex-direction: column;*/
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e6e6e6;
+    }
+      svg {
+      color: #666;
+      margin-right: 16px;
+      height: 18px;
+      width: 18px;
+    }
+  }
+  
+  .newTag {
+    background: #767676;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    height: 40px;
+    padding: 0 16px;
+    &-wrapper{
+      /*表示当前元素的父元素, 即里面的选择器不一定是子元素*/
+      text-align: center;
+      padding: 16px;
+      margin-top: 44-16px;
+    }
+  }
 </style>
