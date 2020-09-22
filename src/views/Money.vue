@@ -22,37 +22,24 @@
   import Tags from '@/components/Money/Tags.vue';
   import Vue from 'vue';
   import {Component, Watch} from 'vue-property-decorator';
+  import model from '@/model';
+  // import model from '@/model';
+  // const model = require('@/model.js').default;
+  // console.log(model);
 
   // const version = window.localStorage.getItem('version') || '0';
-  const recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList') || '')
 
-  // if (version === '0.0.1'){
-  //   //数据库升级, 数据迁移, 暂不使用
-  //   recordList.forEach(record => {
-  //     record.createdAt = new Date(2020, 1, 1) //给前面的时间数据一个初始值, 保证数据结构
-  //   })
-  //   window.localStorage.setItem('recordList', JSON.stringify(recordList))
-  // }
-  //
-  // window.localStorage.setItem('version', '0.0.2');
+  const recordList = model.fetch();
 
-  //record 类型声明
-  type Record = {
-    tags: string[];
-    notes: string;
-    type: string;
-    amount: number;
-    createdAt?: Date; //可以写类型或者类(构造函数),
-  }
 
   @Component({
     components: {Tags, Notes, Types, NumberPad}
   })
   export default class Money extends Vue {
     tags = ['衣', '食', '住', '行'];
-    recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList') || '');
-    // recordList: Record[] = [];
-    record: Record = {
+    // recordList: Record[] = model.fetch()
+    recordList: RecordItem[] = recordList;
+    record: RecordItem = {
       tags: [],
       notes: '',
       type: '-',
@@ -75,7 +62,7 @@
     }
 
     saveRecord() {
-      const record2: Record = JSON.parse(JSON.stringify(this.record)); //深拷贝
+      const record2 = model.clone(this.record);
       record2.createdAt = new Date();
       this.recordList.push(record2);
       console.log(this.recordList);
@@ -84,7 +71,8 @@
     @Watch('recordList')
     onRecordListChanged() {
       //转成字符串存到localStorage
-      window.localStorage.setItem('recordList', JSON.stringify(this.recordList));
+      // window.localStorage.setItem('recordList', JSON.stringify(this.recordList));
+      model.save(this.recordList);
     }
   }
 </script>
