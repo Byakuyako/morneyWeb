@@ -20,7 +20,8 @@
   import Tags from '@/components/Money/Tags.vue';
   import Vue from 'vue';
   import {Component, Watch} from 'vue-property-decorator';
-  import model from '@/model';
+  import model from '@/models/tagListModel';
+  import tagListModel from '@/models/tagListModel';
   // import model from '@/model';
   // const model = require('@/model.js').default;
   // console.log(model);
@@ -28,13 +29,14 @@
   // const version = window.localStorage.getItem('version') || '0';
 
   const recordList = model.fetch();
+  const tagList = tagListModel.fetch()
 
 
   @Component({
     components: {Tags, Notes, Types, NumberPad}
   })
   export default class Money extends Vue {
-    tags = ['衣', '食', '住', '行'];
+    tags = tagList;
     // recordList: Record[] = model.fetch()
     recordList: RecordItem[] = recordList;
     record: RecordItem = {
