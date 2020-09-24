@@ -3,7 +3,7 @@
     <Layout>
       <ol class="tags">
         <li v-for="(tag, index) in tags" :key="index">
-          <span>{{tag}}</span>
+          <span>{{tag.name}}</span>
           <Icon name="right"/>
         </li>
       </ol>
