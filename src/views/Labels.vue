@@ -2,8 +2,8 @@
   <div>
     <Layout>
       <ol class="tags">
-        <li v-for="tag in tags" :key="tag">
-          <span>{tag}</span>
+        <li v-for="(tag, index) in tags" :key="index">
+          <span>{{tag}}</span>
           <Icon name="right"/>
         </li>
       </ol>
@@ -19,13 +19,22 @@
   import {Component} from 'vue-property-decorator';
   import tagListModel from '@/models/tagListModel';
 
+  tagListModel.fetch(); //先加载一次数据
+
   @Component
   export default class Labels extends Vue {
-    tags = tagListModel.fetch();
+    tags = tagListModel.data;
 
     createTag() {
-      const name = window.prompt('请输入标签名')
-      console.log(name);
+      const name = window.prompt('请输入标签名');
+      if (name) {
+        const message = tagListModel.create(name);
+        if (message === 'duplicated') {
+          alert('这个标签已经存在');
+        } else if (message === 'success') {
+          alert('标签添加成功');
+        }
+      }
     }
   }
 </script>

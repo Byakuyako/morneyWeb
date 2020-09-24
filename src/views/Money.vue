@@ -32,6 +32,7 @@
   const tagList = tagListModel.fetch()
 
 
+
   @Component({
     components: {Tags, Notes, Types, NumberPad}
   })
