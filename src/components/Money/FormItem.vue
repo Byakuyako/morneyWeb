@@ -21,7 +21,7 @@
     @Prop() placeholder?: string //placeholder 有可能不存在
 
     @Watch('value')
-    onValueChanged(val: string){ //监听value变化, 取新值
+    onValueChanged(val: string){ //监听value变化, 取新值, 第二可选参数表示旧值
       this.$emit('update:value', val)
     }
 
